@@ -1,38 +1,28 @@
 package com.nttdata;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import net.serenitybdd.annotations.Managed;
+import net.serenitybdd.junit.runners.SerenityRunner;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
+import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.assertTrue;
+
+@RunWith(SerenityRunner.class)
+public class AppTest
+
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+    @Managed
+    WebDriver driver;
+    @Test
+   public void myFirstSerenityTest() throws InterruptedException {
+        driver.get("https://en.wikipedia.org/wiki/Main_Page");
+        TimeUnit.SECONDS.sleep(10);
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+        assertTrue(true);
+
     }
 }
